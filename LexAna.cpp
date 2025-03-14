@@ -4,10 +4,27 @@
 
 using namespace std;
 
-string analyze() {
+/*string analyze() {
     string separators[] = {
         ";", ",", ".", ":", "::", "{", "}", "[", "]", "(", ")", "<>", 
     };
+}*/
+
+bool isSeparator(char c) {
+    string separators[] = {
+        ";", ",", ".", ":", "::", "{", "}", "[", "]", "(", ")", "<>", 
+    };
+
+    int length = sizeof(separators) / sizeof(separators[0]);
+
+    for(int i = 0; i < length; i++) {
+        if(string(1, c) == separators[i]) {
+            return true;
+        }
+
+    }
+
+    return false;
 }
 
 int main(void){
@@ -39,12 +56,16 @@ int main(void){
             content.pop_back();
         }
 
-        if(iscomment == true && c == '\n' || iscomment == true && c == '/' && prev = '*' ) { //Checking if a comment has ended
+        if(iscomment == true && c == '\n' || iscomment == true && c == '/' && prev == '*' ) { //Checking if a comment has ended
             iscomment = false;
         }
 
-        if(iscomment == false) {
-                content.push_back(c);
+        if(iscomment == false && isSeparator(c) == true) {
+            content.push_back(' ');
+            content.push_back(c);
+            content.push_back(' ');
+        } else if (iscomment == false && c != '\n') {
+            content.push_back(c);
         }
         prev = c;
         
@@ -52,6 +73,8 @@ int main(void){
 
     //Printing out file content for debugging purposes
     cout << content;
+
+    
 
     //Closing file
     inFile.close();
