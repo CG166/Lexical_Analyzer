@@ -6,7 +6,9 @@
 
 using namespace std;
 
-/*string analyze() {
+string analyze(string lexeme) {
+    string answer = " =";
+
     string separators[] = {
         ";", ",", ".", ":", "::", "{", "}", "[", "]", "(", ")", "->", "#"
     };
@@ -21,7 +23,34 @@ using namespace std;
         "bool", "wchar_t", "long", "short", "signed", "unsigned", "long long", "typedef", "using", "struct", "union", "enum", "class", "template",
         "try", "catch", "throw", "namespace", "new", "delete", "inline", "friend", "virtual", "override", "final", "explicit", "const", "constexpr", "noexcept"
     };
-}*/
+
+    int Slength = sizeof(separators) / sizeof(separators[0]);
+    int Olength = sizeof(operators) / sizeof(operators[0]);
+    int Klength = sizeof(keywords) / sizeof(keywords[0]);
+
+    for(int i = 0; i < Slength; i++) {
+        if(lexeme == separators[i]) {
+            return /*answer =*/ '"' + lexeme + '"' + answer + " separator.\n\n";
+        }
+    }
+
+    for(int i = 0; i < Olength; i++) {
+        if(lexeme == operators[i]) {
+            return '"' + lexeme + '"' + answer + "operator.\n\n";
+        }
+    }
+
+    for(int i = 0; i < Klength; i++) {
+        if(lexeme == keywords[i]) {
+            return '"' + lexeme + '"' + answer + " keyword.\n\n";
+        }
+    }
+
+
+    answer = '"' + lexeme + '"' + answer +  " identifier" + "\n\n";
+
+    return answer;
+}
 
 bool isSeparator(char c) {
     string separators[] = {
@@ -104,7 +133,7 @@ int main(void){
     //Testing string breakup
     cout << "This the lexemes split up.\n";
     for (const auto& str : lexemes) {
-        cout << str << endl;
+        cout << analyze(str);
     }
 
 
