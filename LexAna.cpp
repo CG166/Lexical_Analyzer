@@ -3,8 +3,22 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <cctype>
 
 using namespace std;
+
+bool isInt(string lexeme) {
+    bool isint = false;
+
+    for(int i = 0; i < lexeme.length(); i++){
+        if(isdigit(lexeme[i])) {
+            isint = true;
+        } else {
+            return false;
+        }
+    }
+    return isint;
+}
 
 string analyze(string lexeme) {
     string answer = " =";
@@ -27,6 +41,10 @@ string analyze(string lexeme) {
     int Slength = sizeof(separators) / sizeof(separators[0]);
     int Olength = sizeof(operators) / sizeof(operators[0]);
     int Klength = sizeof(keywords) / sizeof(keywords[0]);
+
+    if(isInt(lexeme)){
+        return '"' + lexeme + '"' + answer + " integer.\n\n";
+    }
 
     for(int i = 0; i < Slength; i++) {
         if(lexeme == separators[i]) {
