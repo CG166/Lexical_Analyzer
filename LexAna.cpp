@@ -54,7 +54,7 @@ string analyze(string lexeme) {
 
     for(int i = 0; i < Olength; i++) {
         if(lexeme == operators[i]) {
-            return '"' + lexeme + '"' + answer + "operator\n\n";
+            return '"' + lexeme + '"' + answer + " operator\n\n";
         }
     }
 
