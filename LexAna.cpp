@@ -128,16 +128,16 @@ int main(void){
             content.pop_back();
         }
 
-        if(iscomment == true && c == '\n' || iscomment == true && c == '/' && prev == '*' ) { //Checking if a comment has ended
-            iscomment = false;
-        }
-
         if(iscomment == false && isSeparator(c) == true) {
             content.push_back(' ');
             content.push_back(c);
             content.push_back(' ');
         } else if (iscomment == false && c != '\n') {
             content.push_back(c);
+        }
+
+        if(iscomment == true && c == '\n' || iscomment == true && c == '/' && prev == '*' ) { //Checking if a comment has ended
+            iscomment = false;
         }
         prev = c;
         
@@ -150,8 +150,6 @@ int main(void){
     for (const auto& str : lexemes) {
         cout << analyze(str);
     }
-
-
 
     //Closing file
     inFile.close();
