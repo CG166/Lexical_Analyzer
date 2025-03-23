@@ -101,7 +101,7 @@ int main(void){
     string filename;
     string content;
     char c;
-    char prev;
+    char prev = ' ';
     bool iscomment = false;
     vector<string> lexemes;
 
@@ -109,6 +109,7 @@ int main(void){
     //Getting filename from user
     cout << "Filename: ";
     getline(cin, filename);
+    cout << "\n";
 
     //Opening file
     ifstream inFile;
@@ -142,14 +143,10 @@ int main(void){
         
     }
 
-    //Printing out file content for debugging purposes
-    cout << content;
-
     //Breaking up content string into a vector of individual lexemes
     lexemes = split(content);
 
-    //Testing string breakup
-    cout << "This the lexemes split up.\n";
+    //Analyzing lexemes
     for (const auto& str : lexemes) {
         cout << analyze(str);
     }
