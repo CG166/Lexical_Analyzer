@@ -48,7 +48,7 @@ string analyze(string lexeme) {
 
     for(int i = 0; i < Slength; i++) {
         if(lexeme == separators[i]) {
-            return /*answer =*/ '"' + lexeme + '"' + answer + " separator.\n\n";
+            return '"' + lexeme + '"' + answer + " separator.\n\n";
         }
     }
 
@@ -65,7 +65,7 @@ string analyze(string lexeme) {
     }
 
 
-    answer = '"' + lexeme + '"' + answer +  " identifier" + "\n\n";
+    answer = '"' + lexeme + '"' + answer +  " identifier." + "\n\n";
 
     return answer;
 }
