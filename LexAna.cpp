@@ -43,29 +43,29 @@ string analyze(string lexeme) {
     int Klength = sizeof(keywords) / sizeof(keywords[0]);
 
     if(isInt(lexeme)){
-        return '"' + lexeme + '"' + answer + " integer.\n\n";
+        return '"' + lexeme + '"' + answer + " integer\n\n";
     }
 
     for(int i = 0; i < Slength; i++) {
         if(lexeme == separators[i]) {
-            return '"' + lexeme + '"' + answer + " separator.\n\n";
+            return '"' + lexeme + '"' + answer + " separator\n\n";
         }
     }
 
     for(int i = 0; i < Olength; i++) {
         if(lexeme == operators[i]) {
-            return '"' + lexeme + '"' + answer + "operator.\n\n";
+            return '"' + lexeme + '"' + answer + "operator\n\n";
         }
     }
 
     for(int i = 0; i < Klength; i++) {
         if(lexeme == keywords[i]) {
-            return '"' + lexeme + '"' + answer + " keyword.\n\n";
+            return '"' + lexeme + '"' + answer + " keyword\n\n";
         }
     }
 
 
-    answer = '"' + lexeme + '"' + answer +  " identifier." + "\n\n";
+    answer = '"' + lexeme + '"' + answer +  " identifier" + "\n\n";
 
     return answer;
 }
